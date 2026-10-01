@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>college registration form</title>
+</head>
+<body>
+    <h1>REGISTRATION FORM</h1>
+    <form action="/submit" method="post">
+        Name of the student:<input type="text"><br><br>
+        Full name :<input type="text"><br><br>
+        Date of birth:<input type="date" name="birtday"><br><br>
+        Adhar number:<input type="number"><br><br>
+        Email Id:<input type="email" required><br><br>
+        Gender:<input type="radio" name="Gender" value="male">male
+               <input type="radio" name="Gender" value="female">female<br><br>
+        course to choose:<select name="course"><br>
+            <option>mathematics</option>
+            <option>computer science</option>
+            <option>Electronics</option>
+            <option>chemistr</option>
+            <option>statics</option>
+        </select><br><br>
+            previous marks memo:<input type="file"> <br> <br>
+            present adress:<textarea name="name"></textarea><br><br>
+            father name:<input type="text"><br><br>
+            father occupation:<input type="text"><br><br>
+            mother name:<input type="text"><br><br>
+            mother occupation:<input type="text"><br><br>
+            student mobile number:<input type="number"><br><br
+            parents mobile number:<input type="number"><br><br>
+            Any special certificate<input type="file"><br><br>
+            student photo<input type="file"></input><br><br>
+            <button type="submit">submit</button>
+
+    </form><br><br>
+     <table border="3" cellspace="5" cellpadding="5">
+        
+            <tr>
+                <th>Name</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Date of birth</th>
+                <th>Adress</th>
+                <th>Adhar number</th>
+                <th>course</th>
+            </tr>
+            <tbody id="student details"></tbody>       
+    </table> 
+    <script>
+
+        
+        const form = document.querySelector('form');
+        const studentDetailsTable = document.getElementById('student details');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = form.elements[0].value;
+            const fullName = form.elements[1].value;
+            const dob = form.elements[2].value;
+            const adharNumber = form.elements[3].value;
+            const email = form.elements[4].value;
+            const gender = form.elements['Gender'].value;
+            const course = form.elements['course'].value;
+
+            const newRow = studentDetailsTable.insertRow();
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${fullName}</td>
+                <td>${dob}</td>
+                <td>${adharNumber}</td>
+                <td>${email}</td>
+                <td>${gender}</td>
+                <td>${course}</td>
+            `;
+
+            form.reset();
+        });
+    </script>
+</html>
